@@ -16,7 +16,7 @@ public class Queue {
         }
     }
 
-    public myQueue() {
+    public Queue() {
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -63,5 +63,12 @@ public class Queue {
     // getSize()
     public int getSize() {
         return this.size();
+    }
+
+    // clear()
+    public void clear() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
     }
 }

@@ -1,7 +1,6 @@
 import java.util.LinkedList;
-import java.lang;
 
-public class Queue {
+public class Queue<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size;
@@ -26,7 +25,7 @@ public class Queue {
     public void enqueue(T data) {
         Node<T> node = new Node(data);
 
-        if (!this.tail) {
+        if (this.tail == null) {
             head = node;
         } else {
             tail.next = node;
@@ -37,8 +36,8 @@ public class Queue {
     }
 
     // dequeue
-    public Node<T> dequeue() {
-        if (!this.head) {
+    public T remove() {
+        if (this.head == null) {
             throw new NullPointerException("The queue is empty");
         }
 
@@ -46,13 +45,13 @@ public class Queue {
 
         this.head = this.head.next;
 
-        if (!this.head) {
+        if (this.head == null) {
             this.tail = null;
         }
 
         size--;
 
-        return temp;
+        return temp.data;
     }
 
     // peek
@@ -62,7 +61,7 @@ public class Queue {
 
     // getSize()
     public int getSize() {
-        return this.size();
+        return this.size;
     }
 
     // clear()
@@ -70,5 +69,10 @@ public class Queue {
         this.head = null;
         this.tail = null;
         this.size = 0;
+    }
+
+    // isEmpty()
+    public boolean isEmpty() {
+        return this.size == 0;
     }
 }

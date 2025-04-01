@@ -1,0 +1,5 @@
+{
+    "code-runner.executorMap": {
+        "java": "cd $dir && javac Stack.java Test.java && java Test"
+    }
+}

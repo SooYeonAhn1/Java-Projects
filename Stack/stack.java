@@ -1,8 +1,6 @@
 import java.util.LinkedList;
-import java.lang;
 
-
-public class Stack {
+public class Stack<T> {
     private Node<T> head;
     private int size;
 
@@ -25,7 +23,7 @@ public class Stack {
     public void push(T data) {
         Node<T> node = new Node(data);
 
-        if (!this.head) {
+        if (this.head == null) {
             head = node;
         } else {
             node.next = this.head;
@@ -36,8 +34,8 @@ public class Stack {
     }
 
     // dequeue
-    public Node<T> pop() {
-        if (!this.head) {
+    public T pop() {
+        if (this.head == null) {
             throw new NullPointerException("The stack is empty");
         }
 
@@ -47,7 +45,7 @@ public class Stack {
 
         size--;
 
-        return temp;
+        return temp.data;
     }
 
     // peek
@@ -57,11 +55,15 @@ public class Stack {
 
     // getSize()
     public int getSize() {
-        return this.size();
+        return this.size;
     }
 
     public void clear() {
         this.head = null;
         this.size = 0;
+    }
+
+    public boolean isEmpty() {
+        return this.size == 0;
     }
 }

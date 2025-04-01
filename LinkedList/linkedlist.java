@@ -1,10 +1,8 @@
-import java.lang;
-
-public class LinkedList {
-    private Node head;
+public class LinkedList<T> {
+    private Node<T> head;
     private int size;
 
-    private static Node<T> {
+    private static class Node<T> {
         T data;
         Node<T> next;
 
@@ -23,11 +21,11 @@ public class LinkedList {
     public void add(T data) {
         Node<T> node = new Node(data);
 
-        if (!this.head) {
+        if (this.head == null) {
             this.head = node;
         } else {
             Node<T> curr = this.head;
-            while (curr.next) {
+            while (curr.next != null) {
                 curr = curr.next;
             }
             curr.next = node;
@@ -53,7 +51,7 @@ public class LinkedList {
         }
 
         node.next = curr;
-        if (prev) {
+        if (prev != null) {
             prev.next = node;
         }
         if (curr == this.head) {
@@ -64,21 +62,21 @@ public class LinkedList {
     }
 
     public void add(Node<T> node) {
-        if (!node) {
+        if (node == null) {
             throw new NullPointerException("Node cannot be null");
         }
         add(node.data);
     }
 
     public void add(int index, Node<T> node) {
-        if (!node) {
+        if (node == null) {
             throw new NullPointerException("Node cannot be null");
         }
         add(index, node.data);
     }
 
     public void remove() {
-        if (!this.head) {
+        if (this.head == null) {
             throw new NullPointerException("Nothing to delete");
         }
         this.head = this.head.next;
@@ -136,5 +134,14 @@ public class LinkedList {
 
     public boolean isEmpty() {
         return this.size == 0;
+    }
+
+    public void printList() {
+        Node<T> current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
     }
 }
